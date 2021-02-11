@@ -1,43 +1,52 @@
 package com.isp.lab4.exercise6;
 
 public class Square extends Rectangle {
-    private double side;
 
     public Square() {
+        super(4, 4);
     }
 
     public Square(double side) {
-        this.side = side;
+        super(side, side);
     }
 
-    public Square(String color, boolean filled, double width, double length, double side) {
-        super(color, filled, width, length);
-        this.side = side;
+    public Square(String color, boolean filled, double side) {
+        super(color, filled, side, side);
     }
 
     public double getSide() {
-        return side;
+        return super.getLength();
     }
 
     public void setSide(double side) {
-        this.side = side;
+        super.setLength(side);
+        super.setWidth(side);
     }
 
     @Override
     public void setLength(double side) {
-        //super.setLength(side); // sau asa
-        this.side = side;
+        super.setLength(side);
     }
 
     @Override
     public void setWidth(double side) {
-        this.side = side;
+        super.setWidth(side);
+    }
+
+    @Override
+    public double getArea() {
+        return getSide() * getSide();
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 4 * getSide();
     }
 
     @Override
     public String toString() {
         return "Square{" +
-                "side=" + side +
+                "side=" + getSide() +
                 '}' + " which is a subclass of " + super.toString();
     }
 }
